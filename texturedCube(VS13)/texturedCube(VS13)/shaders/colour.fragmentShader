@@ -1,0 +1,21 @@
+#version 400
+
+in vec4 vertex_worldspace;
+in vec4 normal_worldspace;
+in vec2 textureCord;
+in vec4 fragColour;
+
+out vec4 out_colour;
+
+uniform sampler2D texture;
+
+uniform mat4 viewMatrix;
+uniform vec4 MaterialEmissive;
+uniform vec4 MaterialDiffuse;
+uniform vec4 MaterialSpecular;
+uniform float MaterialShininess;
+
+void main(void)
+{
+	out_colour = fragColour;
+}

@@ -1,0 +1,25 @@
+#version 410
+
+layout(location = 0) in vec3 vertex_modelspace;
+layout(location = 1) in vec3 normal_modelSpace;
+layout(location = 2) in vec2 vertexTextureCord;
+layout(location = 3) in vec4 vertexColour;
+
+out vec4 vertex_worldspace;
+out vec4 normal_worldspace;
+out vec2 textureCord;
+out vec4 fragColour;
+
+uniform mat4 MVP;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+void main(void)
+{
+	gl_Position =  MVP * vec4(vertex_modelspace,1);
+	vertex_worldspace = modelMatrix * vec4(vertex_modelspace, 1);
+	normal_worldspace = modelMatrix * vec4(normal_modelSpace, 1);
+	textureCord = vertexTextureCord;
+	fragColour = vertexColour;
+}
